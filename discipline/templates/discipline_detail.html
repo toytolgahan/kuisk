@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ discipline.title }}{% endblock %}
+
+{% block content %}
+
+    
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="position-sticky">
+                    <div class="list-group">
+                        <a href="#key-figures" class="list-group-item list-group-item-action">Subfields</a>
+                        <a href="#key-figures" class="list-group-item list-group-item-action">Key Figures</a>
+                        <a href="#research-teams" class="list-group-item list-group-item-action">Research Teams</a>
+                        <a href="#educational-sources" class="list-group-item list-group-item-action">Educational Sources</a>
+                        <a href="#news" class="list-group-item list-group-item-action">News</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                {{ discipline.introduction|safe }}
+                <!-- Add your discipline introduction paragraphs here -->
+
+                <!-- Add the corresponding sections for each menu item -->
+
+                <section>
+                    <h2>Subfields</h2>
+                    <ul>
+                        {% for field in subdisciplines %} 
+                            <li><a href="{% url 'discipline_detail' field.slug  %}">{{ field.title }} {{ person.last_name }}</a></li>
+                        {% endfor %} 
+
+                    </ul>
+                </section>
+
+
+                <section id="key-figures">
+                    <h2>Key Figures</h2>
+                    <ul>
+                        {% for person in discipline.key_figures.all %} 
+                            <li><a href="{% url 'person_detail' person.id  %}">{{ person.first_name }} {{ person.last_name }}</a></li>
+                        {% endfor %} 
+
+                    </ul>
+                </section>
+
+                <section id="research-teams">
+                    <h2>Research Teams</h2>
+                    <ul>
+                        {% for team in discipline.research_teams.all %} 
+                            <li><a href="{{ team.link }}">{{ team.name }}</a></li>
+                        {% endfor %} 
+
+                    </ul>
+                </section>
+
+
+                <section id="educational-sources">
+                    <h2>Educational Sources</h2>
+                    <ul>
+                        {% for source in discipline.sources.all %} 
+                            <li>
+                                <a href="{{ source.link }}">{{ source.title }}</a>
+                                <p>{{ source.body }}</p>
+                            </li>
+                        {% endfor %} 
+
+                    </ul>
+                </section>
+
+                <section id="news">
+                    <h2>News</h2>
+                    <ul>
+                        {% for news in discipline.news.all %} 
+                            <li>
+                                <a href="{{ news.link }}">{{ news.title }}</a>
+                                <p>{{ news.body }}</p>
+                            </li>
+                        {% endfor %} 
+
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    
+    
+{% endblock %}
