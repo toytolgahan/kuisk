@@ -58,7 +58,10 @@ ROOT_URLCONF = "disciplines.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+                os.path.join(BASE_DIR, "discipline", "templates"),
+                os.path.join(BASE_DIR, "comments", "templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
