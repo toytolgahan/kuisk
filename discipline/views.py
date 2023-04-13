@@ -1,3 +1,4 @@
+print("views.py is getting imported")
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import render, get_object_or_404
 from .models import Discipline, Person
