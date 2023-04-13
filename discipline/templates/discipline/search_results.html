@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h2>Search results for "{{ query }}"</h2>
+        <h3>Disciplines</h3>
+        <ul>
+            {% for discipline in discipline_results %}
+                <li><a href="{% url 'discipline_detail' discipline.slug %}">{{ discipline.title }}</a></li>
+            {% empty %}
+                <li>No results found.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Researchers</h3>
+        <ul>
+            {% for person in person_results %}
+                <li><a href="{% url 'person_detail' person.id %}">{{ person.first_name }} {{ person.last_name }}</a></li>
+            {% empty %}
+                <li>No results found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+
+{% endblock %}
