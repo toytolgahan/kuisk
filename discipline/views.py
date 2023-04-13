@@ -5,11 +5,11 @@ from .models import Discipline, Person
 
 
 def get_parent_discipline():
-    return Discipline.objects.get(title="Artificial Intelligence")
+    return get_object_or_404(Discipline, title="Artificial Intelligence")
 
 def get_main_discipline():
     parent_discipline = get_parent_discipline()
-    return Discipline.objects.filter(parents=parent_discipline)
+    return get_object_or_404(Discipline, parents=parent_discipline)
 
 def home(request):
     main_disciplines = get_main_discipline()
