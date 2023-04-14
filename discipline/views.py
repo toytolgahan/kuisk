@@ -1,4 +1,3 @@
-print("views.py is getting imported")
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import render, get_object_or_404
 from .models import Discipline, Person
@@ -13,13 +12,9 @@ def get_main_discipline():
     return get_object_or_404(Discipline, parents=parent_discipline)
 
 def home(request):
-    print("home1")
     main_disciplines = get_main_discipline()
-    print("home2")
     parent_discipline = get_parent_discipline()
-    print("home4")
     context =  {'main_disciplines':main_disciplines, 'parent_discipline':parent_discipline}
-    print("home5")
     return render(request, 'home.html', context)
 
 def why(request):
