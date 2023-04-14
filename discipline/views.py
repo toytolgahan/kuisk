@@ -14,6 +14,7 @@ def get_main_discipline():
     return get_object_or_404(Discipline, parents=parent_discipline)
 
 def home(request):
+    print("homeee  ")
     main_disciplines = get_main_discipline()
     parent_discipline = get_parent_discipline()
     context =  {'main_disciplines':main_disciplines, 'parent_discipline':parent_discipline}
