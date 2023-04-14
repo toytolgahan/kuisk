@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-ku2jy_+7^ar9g_wp6b+z4gz6lkg!9#5l-8z-k*j2zescgtb--h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['kuisk.com', 'www.kuisk.com']
+ALLOWED_HOSTS = ['kuisk.herokuapp.com', 'www.kuisk.com']
 
 
 
@@ -86,11 +86,11 @@ import dj_database_url
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd4j028o9pn06l1',
-        'USER': 'frwprutbrnlpor',
-        'PASSWORD': 'ac355fa8f6f9546d018b25a17e9f8a1fc4560c357441e71530cf3e22158de19b',
-        'HOST': 'ec2-52-54-200-216.compute-1.amazonaws.com',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd1udbtbel7jjau',
+        'USER': 'cpsfbfpqnisenr',
+        'PASSWORD': '1053ef3d18ecff5df18f94b717b45ff73902541539d31b8e3d6c3cb421f455ec',
+        'HOST': 'ec2-3-83-61-239.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -130,9 +130,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+#STATIC_URL = "static/"
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
