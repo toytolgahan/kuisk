@@ -24,7 +24,7 @@
             <h3>Videos</h3>
             <div class="videos">
                 <ul>
-                    {% for video in person.videos %}
+                    {% for video in person.videos.all %}
                     <li>
                         <h3>{{ video.title }}</h3>
                         <iframe width="560" height="315" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -37,7 +37,7 @@
             
             <h3>Major Works</h3>
             <ul class="major-works">
-                {% for work in person.works.all %}
+                {% for work in works %}
                 <li> 
                     <h4>{{ work.title }} </h4>
                     <p>{{ work.summary }}</p>

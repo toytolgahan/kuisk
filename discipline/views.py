@@ -1,6 +1,6 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import render, get_object_or_404
-from .models import Discipline, Person
+from .models import Discipline, Person, Work
 # Create your views here.
 
 
@@ -27,7 +27,8 @@ def discipline_detail(request, discipline_slug):
 
 def person_detail(request, pk):
     person = get_object_or_404(Person, pk=pk)
-    context = {'person':person,'main_disciplines':main_disciplines}
+    works = Work.objects.filter(authors__id=person.id)
+    context = {'person':person,'main_disciplines':main_disciplines,'works':works}
     return render(request, 'person_detail.html',context)
 
 
