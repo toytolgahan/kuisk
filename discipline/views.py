@@ -9,6 +9,7 @@ main_disciplines = Discipline.objects.filter(parents=parent_discipline)
 
 
 def home(request):
+    print("main disciplines: ",main_disciplines)
     context =  {'main_disciplines':main_disciplines, 'parent_discipline':parent_discipline}
     return render(request, 'home.html', context)
 
