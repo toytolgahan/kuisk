@@ -23,12 +23,26 @@
             
             <h3>Videos</h3>
             <div class="videos">
-                <!-- Display videos, either as embedded YouTube videos or as links -->
+                <ul>
+                    {% for video in person.videos %}
+                    <li>
+                        <h3>{{ video.title }}</h3>
+                        <iframe width="560" height="315" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <p>{{ video.body }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                
             </div>
             
             <h3>Major Works</h3>
             <ul class="major-works">
-                <!-- List major works -->
+                {% for work in Work.objects.filter(author=person) %}
+                <li> 
+                    <h4>{{ work.title }} </h4>
+                    <p>{{ work.summary }}</p>
+                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

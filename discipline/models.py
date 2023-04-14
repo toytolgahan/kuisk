@@ -4,14 +4,13 @@ from django.db import models
 
 # Create your models here.
 
-class EdSource(models.Model):
+
+class Video(models.Model):
     title = models.CharField(max_length=255)
     link = models.URLField()
     body = models.TextField(blank=True)
-
     def __str__(self):
         return self.title
-
 
 class News(models.Model):
     title = models.CharField(max_length=255)
@@ -28,22 +27,34 @@ class Institute(models.Model):
     def __str__(self):
         return self.name
     
+class EdSource(models.Model):
+    title = models.CharField(max_length=255)
+    link = models.URLField()
+    body = models.TextField(blank=True)
+    institute = models.ManyToManyField(Institute, blank=True, related_name='edsources')
+
+    def __str__(self):
+        return self.title
+    
     
 class Person(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255,blank=True)
+    first_name = models.CharField(max_length=255,blank=True)
+    last_name = models.CharField(max_length=255)
     bio = models.TextField(blank=True)
     institute = models.ManyToManyField(Institute, blank=True,related_name='persons')
-
+    videos = models.ManyToManyField(Video,blank=True, related_name='persons')
 
     def __str__(self):
         return self.last_name
+    
+
     
     
 class Work(models.Model):
     title = models.CharField(max_length=255)
     authors = models.ManyToManyField(Person,blank=True, related_name='works')
     summary = models.TextField()
+    videos = models.ManyToManyField(Video,blank=True,related_name='works')
 
     def __str__(self):
         return self.title
@@ -69,5 +80,6 @@ class Discipline(models.Model):
     research_teams = models.ManyToManyField(Team,blank=True,related_name='disciplines')
     news = models.ManyToManyField(News, blank=True, related_name='disciplines')
     sources = models.ManyToManyField(EdSource, blank=True, related_name='disciplines')
+    videos = models.ManyToManyField(Video, blank=True, related_name='disciplines')
     def __str__(self):
         return self.title

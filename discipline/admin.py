@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Person, Discipline, Work, Team, Institute, News, EdSource
+from .models import Person, Discipline, Work, Team, Institute, News, EdSource, Video
 
 # Register your models here.
 
@@ -10,3 +10,4 @@ admin.site.register(Team)
 admin.site.register(Institute)
 admin.site.register(News)
 admin.site.register(EdSource)
+admin.site.register(Video)
