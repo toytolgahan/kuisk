@@ -5,7 +5,7 @@ from .models import Discipline, Person
 
 
 parent_discipline = Discipline.objects.filter(title="Artificial Intelligence")
-main_disciplines = Discipline.objects.filter(parents=parent_discipline)
+main_disciplines = Discipline.objects.filter(parents__in=[parent_discipline])
 
 
 def home(request):
