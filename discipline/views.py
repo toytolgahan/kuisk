@@ -9,6 +9,7 @@ def get_parent_discipline():
 
 def get_main_discipline():
     parent_discipline = get_parent_discipline()
+    print(parent_discipline)
     return get_object_or_404(Discipline, parents=parent_discipline)
 
 def home(request):
