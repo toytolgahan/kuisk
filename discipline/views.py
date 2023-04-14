@@ -5,12 +5,11 @@ from .models import Discipline, Person
 
 
 parent_discipline = Discipline.objects.filter(title="Artificial Intelligence")
-main_disciplines = Discipline.objects.filter(parents__in=[parent_discipline])
+main_disciplines = Discipline.objects.filter(parents=parent_discipline)
 
 
 def home(request):
     print("parent disciplines ",parent_discipline)
-    print("in list form ",list(main_disciplines))
     print("main disciplines: ",main_disciplines)
     context =  {'main_disciplines':main_disciplines, 'parent_discipline':parent_discipline}
     return render(request, 'home.html', context)
