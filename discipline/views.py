@@ -5,6 +5,7 @@ from .models import Discipline, Person
 
 
 def get_parent_discipline():
+    print("we are here now ")
     return get_object_or_404(Discipline, title="Artificial Intelligence")
 
 def get_main_discipline():
