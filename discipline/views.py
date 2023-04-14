@@ -5,7 +5,7 @@ from .models import Discipline, Person
 
 
 def get_parent_discipline():
-    return get_object_or_404(Discipline, title="Artificial Intelligence")
+    return get_object_or_404(Discipline, title="Artificial Intelligence").first()
 
 def get_main_discipline():
     parent_discipline = get_parent_discipline()
