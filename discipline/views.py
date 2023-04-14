@@ -4,8 +4,9 @@ from .models import Discipline, Person
 # Create your views here.
 
 
-parent_discipline = Discipline.objects.filter(title="Artificial Intelligence")
-main_disciplines = Discipline.objects.filter(parents=parent_discipline)
+parent_discipline = Discipline.objects.get(title="Artificial Intelligence")
+main_disciplines = Discipline.objects.filter(parents__title="Artificial Intelligence")
+
 
 
 def home(request):
