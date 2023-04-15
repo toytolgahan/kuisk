@@ -27,7 +27,9 @@
                     {% for video in person.videos.all %}
                     <li>
                         <h3>{{ video.title }}</h3>
+                        <a href="{{ video.link }}" target="_blank">
                         <iframe width="560" height="315" src="{{ video.link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </a>
                         <p>{{ video.body }}</p>
                     </li>
                     {% endfor %}
