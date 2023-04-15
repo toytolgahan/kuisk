@@ -51,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'disciplines.middleware.RedirectToPrimaryDomainMiddleware',
 ]
 
 ROOT_URLCONF = "disciplines.urls"
