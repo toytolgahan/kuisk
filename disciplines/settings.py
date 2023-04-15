@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-ku2jy_+7^ar9g_wp6b+z4gz6lkg!9#5l-8z-k*j2zescgtb--h"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['kuisk.herokuapp.com', 'www.kuisk.com']
 
@@ -83,7 +83,7 @@ WSGI_APPLICATION = "disciplines.wsgi.application"
 import dj_database_url
 
 # ...
-
+"""
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -102,7 +102,7 @@ DATABASES = {
     }
 }
 
-"""
+
 
 # Update the database configuration with $DATABASE_URL.
 #db_from_env = dj_database_url.config(conn_max_age=500, env='HEROKU_POSTGRESQL_SILVER_URL')
@@ -152,3 +152,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 import django_heroku
 django_heroku.settings(locals())
+
