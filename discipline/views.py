@@ -6,12 +6,10 @@ from .models import Discipline, Person, Work
 
 parent_discipline = Discipline.objects.get(title="Artificial Intelligence")
 main_disciplines = Discipline.objects.filter(parents__title="Artificial Intelligence")
-neural_models = Discipline.objects.get(title="Neural Networks")
+neural_models = Discipline.objects.get(title="Neural Networks").all
 
 
 def home(request):
-    print("parent disciplines ",parent_discipline)
-    print("main disciplines: ",main_disciplines)
     context =  {'main_disciplines':main_disciplines, 'parent_discipline':parent_discipline}
     context['neural_models'] = neural_models
     return render(request, 'home.html', context)
