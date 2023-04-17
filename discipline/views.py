@@ -6,7 +6,7 @@ from .models import Discipline, Person, Work
 
 parent_discipline = Discipline.objects.get(title="Artificial Intelligence")
 main_disciplines = Discipline.objects.filter(parents__title="Artificial Intelligence")
-neural_models = [Discipline.objects.get(title="Neural Networks")]
+neural_models = Discipline.objects.get(title="Neural Networks")
 
 
 def home(request):

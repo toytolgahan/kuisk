@@ -68,40 +68,27 @@
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  AI Models and Architectures
+                  Neural Networks
                 </a>
-                <ul class="dropdown-menu">
-                  {% for model in neural_models %}
-                    {% if not model.disciplines.all %}
-                      <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
-                    {% else %} 
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{ model.title }}
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for discipline in neural_models %}
+                    {% if discipline.disciplines.all %}
+                      <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ discipline.title }}
                         </a>
-                        <ul class="dropdown-menu">
-                          {% for child in model.disciplines.all %} 
-                            {% if not child.disciplines.all %}
-                              <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
-                            {% else %} 
-                            <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ child.title }}
-                              </a>
-                              <ul class="dropdown-menu">
-                                {% for grandchild in child.disciplines.all %}
-                                  <li><a class="dropdown-item" href="{% url 'discipline_detail' grandchild.slug %}">{{ grandchild.title }}</a></li>
-                                {% endfor %}
-                              </ul>
-                            </li>
-                            {% endif %}
-                          {% endfor %}
+                        {% for child in discipline.disciplines.all %}
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                          <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
                         </ul>
                       </li>
-                    {% endif %}
+                    {% else %}
+                      <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
                   {% endfor %}
                 </ul>
               </li>
+
+              
  
             </ul>
             <form class="d-flex" role="search" action="{% url 'search' %}" method="GET">
