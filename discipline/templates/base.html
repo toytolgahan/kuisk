@@ -71,19 +71,22 @@
                   Neural Networks
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for discipline in neural_models %}
-                    {% if discipline.disciplines.all %}
+                  {% for model in neural_models %}
+                    {% if model.disciplines.all %}
                       <li class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{ discipline.title }}
+                          {{ model.title }}
                         </a>
-                        {% for child in discipline.disciplines.all %}
+                        
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                          <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
+                          {% for child in model.disciplines.all %}
+                            <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
+                          {% endfor %} 
                         </ul>
                       </li>
                     {% else %}
                       <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
+                    {% endif %}
                   {% endfor %}
                 </ul>
               </li>
