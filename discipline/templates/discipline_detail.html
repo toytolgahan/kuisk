@@ -37,7 +37,7 @@
                 </section>
                 {% endif %} 
 
-                {% if discipline.key_figures %} 
+                {% if discipline.key_figures.all %} 
                 <section id="key-figures">
                     <h2>Key Figures</h2>
                     <ul>
@@ -47,9 +47,9 @@
 
                     </ul>
                 </section>
-                { endif %} 
+                {% endif %} 
 
-                {% if discipline.research_teams %}
+                {% if discipline.research_teams.all %}
                 <section id="research-teams">
                     <h2>Research Teams</h2>
                     <ul>
@@ -61,7 +61,7 @@
                 </section>
                 {% endif %} 
 
-                {% if discipline.sources %}
+                {% if discipline.sources.all %}
                 <section id="educational-sources">
                     <h2>Educational Sources</h2>
                     <ul>
@@ -80,7 +80,7 @@
                 </section>
                 {% endif %}
 
-                {% if discipline.news %}
+                {% if discipline.news.all %}
                 <section id="news">
                     <h2>News</h2>
                     <ul>
