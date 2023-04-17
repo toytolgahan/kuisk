@@ -65,7 +65,44 @@
                 {% endfor %}
                 </ul>
               </li>
-              
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  AI Models and Architectures
+                </a>
+                <ul class="dropdown-menu">
+                  {% for model in models %}
+                    {% if not model.disciplines.all %}
+                      <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
+                    {% else %} 
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ model.title }}
+                        </a>
+                        <ul class="dropdown-menu">
+                          {% for child in model.disciplines.all %} 
+                            {% if not child.disciplines.all %}
+                              <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
+                            {% else %} 
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ child.title }}
+                              </a>
+                              <ul class="dropdown-menu">
+                                {% for grandchild in child.disciplines.all %}
+                                  <li><a class="dropdown-item" href="{% url 'discipline_detail' grandchild.slug %}">{{ grandchild.title }}</a></li>
+                                {% endfor %}
+                              </ul>
+                            </li>
+                            {% endif %}
+                          {% endfor %}
+                        </ul>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              </li>
+ 
             </ul>
             <form class="d-flex" role="search" action="{% url 'search' %}" method="GET">
               <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
