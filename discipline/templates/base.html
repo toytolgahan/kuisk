@@ -85,7 +85,7 @@
                         </ul>
                       </li>
                     {% else %}
-                      <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
+                      <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
                     {% endif %}
                   {% endfor %}
                 </ul>
