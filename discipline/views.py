@@ -36,6 +36,6 @@ def search(request):
     query = request.GET.get('query', '')
     discipline_results = Discipline.objects.filter(title__icontains=query)
     person_results = Person.objects.filter(last_name__icontains=query)
-    context = {'discipline_results':discipline_results,'person_results':person_results, 'query':query}
+    context = {'discipline_results':discipline_results,'person_results':person_results, 'query':query, 'main_disciplines':main_disciplines}
     return render(request, 'search_results.html', context)
 

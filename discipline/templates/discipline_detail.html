@@ -62,7 +62,11 @@
                     <ul>
                         {% for source in discipline.sources.all %} 
                             <li>
-                                <a href="{{ source.link }}">{{ source.title }}</a> by <a href="{{ source.institute.link }}">{{ source.institute.name }}</a> 
+                                <a href="{{ source.link }}">{{ source.title }}</a> by 
+                                {% for institute in source.institute.all %}
+                                    <a href="{{ institute.link }}">{{ institute.name }}</a>
+                                {% endfor %}
+                               
                                 <p>{{ source.body }}</p>
                             </li>
                         {% endfor %} 
