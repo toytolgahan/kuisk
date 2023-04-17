@@ -71,7 +71,7 @@
                   AI Models and Architectures
                 </a>
                 <ul class="dropdown-menu">
-                  {% for model in models %}
+                  {% for model in neural_models %}
                     {% if not model.disciplines.all %}
                       <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
                     {% else %} 
