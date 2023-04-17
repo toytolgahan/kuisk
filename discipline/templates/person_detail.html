@@ -10,6 +10,7 @@
             
             <p>{{ person.bio|safe }}</p>
             
+            {% if person.scholar_link %}
             <h3>External Links</h3>
             <ul>
                 {% if person.scholar_link %}
@@ -19,7 +20,9 @@
                     <li><a href="{{ person.wikipedia_link }}" target="_blank">Wikipedia Page</a></li>
                 {% endif %}
             </ul>
+            {% endif %} 
             
+            {% if person.videos %}
             <h3>Videos</h3>
             <div class="videos">
                 <ul>
@@ -34,7 +37,10 @@
                 </ul>
                 
             </div>
-            
+            {% endif %}
+
+
+            {% if works %}
             <h3>Major Works</h3>
             <ul class="major-works">
                 {% for work in works %}
@@ -44,6 +50,7 @@
                 </li>
                 {% endfor %}
             </ul>
+            {% endif %} 
         </div>
     </div>
 

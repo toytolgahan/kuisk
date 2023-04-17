@@ -25,6 +25,7 @@
 
                 <!-- Add the corresponding sections for each menu item -->
 
+                {% if subdisciplines %}
                 <section>
                     <h2>Subfields</h2>
                     <ul>
@@ -34,8 +35,9 @@
 
                     </ul>
                 </section>
+                {% endif %} 
 
-
+                {% if discipline.key_figures %} 
                 <section id="key-figures">
                     <h2>Key Figures</h2>
                     <ul>
@@ -45,7 +47,9 @@
 
                     </ul>
                 </section>
+                { endif %} 
 
+                {% if discipline.research_teams %}
                 <section id="research-teams">
                     <h2>Research Teams</h2>
                     <ul>
@@ -55,8 +59,9 @@
 
                     </ul>
                 </section>
+                {% endif %} 
 
-
+                {% if discipline.sources %}
                 <section id="educational-sources">
                     <h2>Educational Sources</h2>
                     <ul>
@@ -73,7 +78,9 @@
 
                     </ul>
                 </section>
+                {% endif %}
 
+                {% if discipline.news %}
                 <section id="news">
                     <h2>News</h2>
                     <ul>
@@ -86,6 +93,7 @@
 
                     </ul>
                 </section>
+                {% endif %} 
             </div>
         </div>
     </div>
