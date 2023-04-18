@@ -23,6 +23,6 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('discipline.urls')),
     path("comments/", include('comments.urls')),
-    re_path(r'^.well-known/pki-validation/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
+    re_path(r'^.well-known/pki-validation/(?P<path>.*)$', serve, {'document_root': '.well-known/pki-validation'}),
 
 ]
