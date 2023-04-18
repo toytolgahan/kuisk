@@ -7,9 +7,9 @@ from .models import Discipline, Person, Work
 parent_discipline = Discipline.objects.get(title="Artificial Intelligence")
 main_disciplines = Discipline.objects.filter(parents__title="Artificial Intelligence")
 neural_models = Discipline.objects.filter(parents__title="Neural Networks")
-machine_learning = Discipline.objects.filter(parent__title="Machine Learning")
-reinforcement_learning = Discipline.objects.filter(parent__title="Reinforcement Learning")
-human_readable = Discipline.objects.filter(parent__title="Human-Readable Models")
+machine_learning = Discipline.objects.filter(parents__title="Machine Learning")
+reinforcement_learning = Discipline.objects.filter(parents__title="Reinforcement Learning")
+human_readable = Discipline.objects.filter(parents__title="Human-Readable Models")
 
 context = {}
 context['main_disciplines'] = main_disciplines
