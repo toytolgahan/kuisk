@@ -70,29 +70,50 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Neural Networks
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for model in neural_models %}
-                    {% if model.disciplines.all %}
-                      <li class="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{ model.title }}
-                        </a>
-                        
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                          {% for child in model.disciplines.all %}
-                            <li><a class="dropdown-item" href="{% url 'discipline_detail' child.slug %}">{{ child.title }}</a></li>
-                          {% endfor %} 
-                        </ul>
-                      </li>
-                    {% else %}
-                      <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
-                    {% endif %}
-                  {% endfor %}
+                <ul class="dropdown-menu">
+                {% for neural_net in neural_models %}
+                  <li><a class="dropdown-item" href="{% url 'discipline_detail' neural_net.slug %}">{{ neural_net.title }}</a></li>
+                {% endfor %}
                 </ul>
               </li>
 
-              
- 
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Machine Learning
+                </a>
+                <ul class="dropdown-menu">
+                {% for model in machine_learning %}
+                  <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Reinforcement Learning
+                </a>
+                <ul class="dropdown-menu">
+                {% for model in reinforcement_learning %}
+                  <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Human-Readable Models
+                </a>
+                <ul class="dropdown-menu">
+                {% for model in human_readable %}
+                  <li><a class="dropdown-item" href="{% url 'discipline_detail' model.slug %}">{{ model.title }}</a></li>
+                {% endfor %}
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'comments' %}">Comments</a>
+              </li>
+               
             </ul>
             <form class="d-flex" role="search" action="{% url 'search' %}" method="GET">
               <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">

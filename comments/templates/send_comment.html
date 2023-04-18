@@ -2,11 +2,55 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h1>Send a Comment</h1>
-    <form method="post">
+    <h1 class="text-primary">Send a Comment</h1>
+    <form method="post" class="my-4">
         {% csrf_token %}
-        {{ form.as_p }}
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">Your Name:</label>
+            {{ form.name }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Your Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="form-group">
+            <label for="{{ form.comment.id_for_label }}">Your Comment:</label>
+            {{ form.comment }}
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 {% endblock %}
+
+<style>
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+}
+</style>
+
