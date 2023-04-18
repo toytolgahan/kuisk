@@ -15,14 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+import os
 from django.urls import path, include, re_path
 from django.contrib.staticfiles.views import serve
+from django.conf.urls.static import static
 from django.conf import settings
+from disciplines.settings import BASE_DIR
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('discipline.urls')),
     path("comments/", include('comments.urls')),
-    re_path(r'^.well-known/pki-validation/(?P<path>.*)$', serve, {'document_root': '.well-known/pki-validation'}),
-
+    re_path(r'^.well-known/pki-validation/(?P<path>.*)$', serve, {'document_root': os.path.join(BASE_DIR, '.well-known/pki-validation')}),
 ]
