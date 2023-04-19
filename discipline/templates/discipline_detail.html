@@ -21,16 +21,14 @@
             </div>
             <div class="col-md-9">
                 {{ discipline.introduction|safe }}
-                <!-- Add your discipline introduction paragraphs here -->
-
-                <!-- Add the corresponding sections for each menu item -->
+                
 
                 {% if subdisciplines %}
                 <section>
                     <h2>Subfields</h2>
                     <ul>
                         {% for field in subdisciplines %} 
-                            <li><a href="{% url 'discipline_detail' field.slug  %}">{{ field.title }} {{ person.last_name }}</a></li>
+                            <li><a href="{% url 'discipline_detail' field.slug  %}">{{ field.title }}</a></li>
                         {% endfor %} 
 
                     </ul>

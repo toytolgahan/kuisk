@@ -7,7 +7,9 @@
     <div class="container">
         <div class="person-detail">
             
-            
+            {% if not person.bio.all %} 
+                {{ person.first_name }} {{ person.last_name }}
+            {% endif %} 
             <p>{{ person.bio|safe }}</p>
             
             {% if person.scholar_link %}

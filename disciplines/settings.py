@@ -28,7 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['www.kuisk.com', 'kuisk.com']
 
-
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
