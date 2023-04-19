@@ -78,6 +78,24 @@
                 </section>
                 {% endif %}
 
+                {% if discipline.videos.all %}
+                    <h3>Videos</h3>
+                    <div class="videos">
+                        <ul>
+                            {% for video in discipline.videos.all %}
+                            <li>
+                                <h3>{{ video.title }}</h3>
+                                {% with video_link=video.link.replace('youtu.be/', 'youtube.com/embed/') %}
+                                <a href="{{ video.link }}" target="_blank">{{ video.title }}</a>
+                                <iframe width="560" height="315" src="{{ video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                {% endwith %}
+                                <p>{{ video.body }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+
                 {% if discipline.news.all %}
                 <section id="news">
                     <h2>News</h2>

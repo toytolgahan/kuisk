@@ -31,9 +31,10 @@
                     {% for video in person.videos.all %}
                     <li>
                         <h3>{{ video.title }}</h3>
+                        {% with video_link=video.link.replace('youtu.be/', 'youtube.com/embed/') %}
                         <a href="{{ video.link }}" target="_blank">{{ video.title }}</a>
-                        <iframe src="{{ video.link }}" width="560" height="315" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
+                        <iframe width="560" height="315" src="{{ video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        {% endwith %}
                         <p>{{ video.body }}</p>
                     </li>
                     {% endfor %}
