@@ -8,7 +8,7 @@
         <div class="person-detail">
             
             {% if not person.bio.all %} 
-                {{ person.first_name }} {{ person.last_name }}
+                <h2>{{ person.first_name }} {{ person.last_name }}</h2>
             {% endif %} 
             <p>{{ person.bio|safe }}</p>
             
